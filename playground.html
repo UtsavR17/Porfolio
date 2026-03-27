@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Interactive code playground — write, run, and test Deluge, JavaScript, Python, and HTML code with live output.">
+    <title>Deluge Practice — Code Playground</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
+</head>
+
+<body>
+    <nav class="navbar" id="main-nav">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">D</div>
+            <span>Deluge<span class="highlight">Practice</span></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html"><span class="nav-icon">📖</span> Tutorials</a></li>
+            <li><a href="flows.html"><span class="nav-icon">🔀</span> Flows</a></li>
+            <li><a href="creator.html"><span class="nav-icon">🏗️</span> Creator</a></li>
+            <li><a href="catalyst.html"><span class="nav-icon">⚗️</span> Catalyst</a></li>
+            <li><a href="mcp.html"><span class="nav-icon">🤖</span> MCP</a></li>
+            <li><a href="cheatsheet.html"><span class="nav-icon">📋</span> Cheat Sheet</a></li>
+            <li><a href="snippets.html"><span class="nav-icon">✂️</span> Snippets</a></li>
+            <li><a href="errors.html"><span class="nav-icon">🐛</span> Errors</a></li>
+            <li><a href="playground.html" class="active"><span class="nav-icon">🧪</span> Playground</a></li>
+        </ul>
+    </nav>
+    <main class="main-content">
+        <div class="playground-layout">
+            <!-- Sidebar -->
+            <aside class="playground-sidebar">
+                <div class="palette-title">Playground</div>
+
+                <!-- Language Selector -->
+                <div class="pg-section">
+                    <div class="pg-section-label">Language</div>
+                    <div class="pg-lang-grid" id="lang-selector">
+                        <button class="pg-lang-btn active" data-lang="deluge" title="Deluge">
+                            <span class="pg-lang-icon"
+                                style="background:rgba(163,113,247,0.15);color:var(--accent-purple);">D</span>
+                            <span>Deluge</span>
+                        </button>
+                        <button class="pg-lang-btn" data-lang="javascript" title="JavaScript">
+                            <span class="pg-lang-icon"
+                                style="background:rgba(210,153,34,0.15);color:var(--accent-yellow);">JS</span>
+                            <span>JavaScript</span>
+                        </button>
+                        <button class="pg-lang-btn" data-lang="python" title="Python">
+                            <span class="pg-lang-icon"
+                                style="background:rgba(56,139,253,0.15);color:var(--accent-blue);">Py</span>
+                            <span>Python</span>
+                        </button>
+                        <button class="pg-lang-btn" data-lang="html" title="HTML/CSS">
+                            <span class="pg-lang-icon"
+                                style="background:rgba(240,136,62,0.15);color:var(--accent-orange);">&#60;/&#62;</span>
+                            <span>HTML</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- Snippets Quick-Load -->
+                <div class="pg-section">
+                    <div class="pg-section-label">Quick Templates</div>
+                    <div class="pg-template-list" id="template-list">
+                        <!-- populated by JS -->
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- Info -->
+                <div class="pg-section pg-info-section">
+                    <div class="pg-section-label">Shortcuts</div>
+                    <div class="pg-shortcut"><kbd>Ctrl</kbd>+<kbd>Enter</kbd> Run</div>
+                    <div class="pg-shortcut"><kbd>Ctrl</kbd>+<kbd>L</kbd> Clear Output</div>
+                    <div class="pg-shortcut"><kbd>Ctrl</kbd>+<kbd>S</kbd> Save to Local</div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- History -->
+                <div class="pg-section">
+                    <div class="pg-section-label">Saved Scripts <span class="count-badge" id="saved-count">0</span>
+                    </div>
+                    <div class="pg-saved-list" id="saved-list">
+                        <div class="pg-empty-saved">No saved scripts yet</div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Editor Panel -->
+            <div class="playground-editor-panel">
+                <div class="editor-header">
+                    <div class="file-tab">
+                        <span class="dot" style="background:var(--accent-purple);"></span>
+                        <span id="pg-filename">script.dg</span>
+                        <span class="pg-lang-badge" id="pg-lang-badge">DELUGE</span>
+                    </div>
+                    <div class="editor-actions">
+                        <button class="btn" id="btn-pg-clear" title="Clear editor">↺ Clear</button>
+                        <button class="btn" id="btn-pg-save" title="Save script (Ctrl+S)">💾 Save</button>
+                        <button class="btn btn-primary" id="btn-pg-run" title="Run code (Ctrl+Enter)">▶ Run</button>
+                    </div>
+                </div>
+                <div class="editor-wrapper">
+                    <textarea id="playground-editor"></textarea>
+                </div>
+            </div>
+
+            <!-- Output Panel -->
+            <div class="playground-output-panel">
+                <div class="output-header">
+                    <div class="output-title">⬥ Output</div>
+                    <div class="pg-output-actions">
+                        <span class="output-status" id="pg-output-status"></span>
+                        <button class="btn pg-clear-output-btn" id="btn-pg-clear-output"
+                            title="Clear output (Ctrl+L)">🗑 Clear</button>
+                    </div>
+                </div>
+                <div class="pg-output-split">
+                    <!-- Console Output -->
+                    <div class="output-content" id="pg-output-console">
+                        <div class="output-line info">Ready to run your code...</div>
+                    </div>
+                    <!-- HTML Preview (shown for HTML mode) -->
+                    <iframe id="pg-html-preview" class="pg-html-preview" sandbox="allow-scripts allow-modals"
+                        style="display:none;"></iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="toast-container" id="toast-container"></div>
+    <!-- CodeMirror core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <!-- Language modes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+    <!-- Addons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closetag.min.js"></script>
+    <script src="js/playground.js"></script>
+</body>
+
+</html>

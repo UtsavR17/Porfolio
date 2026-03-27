@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <title>Deluge Practice — MCP Playground</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
   <nav class="navbar" id="main-nav">
     <a href="index.html" class="logo">
@@ -22,6 +24,7 @@
       <li><a href="cheatsheet.html"><span class="nav-icon">📋</span> Cheat Sheet</a></li>
       <li><a href="snippets.html"><span class="nav-icon">✂️</span> Snippets</a></li>
       <li><a href="errors.html"><span class="nav-icon">🐛</span> Errors</a></li>
+      <li><a href="playground.html"><span class="nav-icon">🧪</span> Playground</a></li>
     </ul>
   </nav>
   <main class="main-content">
@@ -32,18 +35,26 @@
 
         <div class="mcp-form-group">
           <label class="mcp-form-label">Tool Name</label>
-          <input class="mcp-form-input" type="text" id="mcp-tool-name" placeholder="e.g. get_crm_lead" value="get_crm_lead">
+          <input class="mcp-form-input" type="text" id="mcp-tool-name" placeholder="e.g. get_crm_lead"
+            value="get_crm_lead">
         </div>
         <div class="mcp-form-group">
           <label class="mcp-form-label">Description</label>
-          <textarea class="mcp-form-input" id="mcp-tool-desc" placeholder="What does this tool do?">Fetch a lead record from Zoho CRM by ID</textarea>
+          <textarea class="mcp-form-input" id="mcp-tool-desc"
+            placeholder="What does this tool do?">Fetch a lead record from Zoho CRM by ID</textarea>
         </div>
         <div class="mcp-form-group">
           <label class="mcp-form-label">Input Parameters</label>
           <div class="param-list" id="param-list">
             <div class="param-item" data-idx="0">
               <input type="text" placeholder="Param name" value="lead_id">
-              <select><option>string</option><option>number</option><option>boolean</option><option>object</option><option>array</option></select>
+              <select>
+                <option>string</option>
+                <option>number</option>
+                <option>boolean</option>
+                <option>object</option>
+                <option>array</option>
+              </select>
               <button class="param-remove" onclick="removeParam(this)">✕</button>
             </div>
           </div>
@@ -51,7 +62,8 @@
         </div>
         <div class="mcp-form-group">
           <label class="mcp-form-label">Required Params (comma separated)</label>
-          <input class="mcp-form-input" type="text" id="mcp-required" placeholder="e.g. lead_id, module" value="lead_id">
+          <input class="mcp-form-input" type="text" id="mcp-required" placeholder="e.g. lead_id, module"
+            value="lead_id">
         </div>
 
         <div class="section-divider"></div>
@@ -104,4 +116,5 @@
   <div class="toast-container" id="toast-container"></div>
   <script src="js/mcp.js"></script>
 </body>
+
 </html>

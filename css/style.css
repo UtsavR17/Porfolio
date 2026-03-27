@@ -2172,3 +2172,281 @@ textarea.mcp-form-input {
     border-radius: 8px;
     margin-left: var(--space-sm);
 }
+
+/* ================================================================
+   CODE PLAYGROUND STYLES
+   ================================================================ */
+.playground-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr 1fr;
+    height: calc(100vh - var(--nav-height));
+}
+
+.playground-sidebar {
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border-default);
+    padding: var(--space-md);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.pg-section { margin-bottom: var(--space-md); }
+
+.pg-section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: var(--space-sm);
+}
+
+/* Language selector grid */
+.pg-lang-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xs);
+}
+
+.pg-lang-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-family: var(--font-ui);
+}
+
+.pg-lang-btn:hover {
+    border-color: var(--accent-blue);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+}
+
+.pg-lang-btn.active {
+    border-color: var(--accent-blue);
+    background: var(--bg-active);
+    color: var(--accent-blue-bright);
+    box-shadow: 0 0 10px rgba(56, 139, 253, 0.1);
+}
+
+.pg-lang-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+}
+
+/* Language badge in editor header */
+.pg-lang-badge {
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: rgba(56, 139, 253, 0.15);
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-left: var(--space-sm);
+}
+
+/* Template buttons */
+.pg-template-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.pg-template-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-align: left;
+    font-family: var(--font-ui);
+}
+
+.pg-template-btn:hover {
+    border-color: var(--accent-blue);
+    color: var(--text-primary);
+    transform: translateX(4px);
+}
+
+/* Shortcuts info */
+.pg-info-section .pg-shortcut {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: var(--space-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.pg-info-section kbd {
+    display: inline-block;
+    padding: 1px 5px;
+    font-size: 0.65rem;
+    font-family: var(--font-mono);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-default);
+    border-radius: 3px;
+    color: var(--text-secondary);
+    box-shadow: 0 1px 0 var(--border-default);
+}
+
+/* Saved scripts list */
+.pg-saved-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.pg-empty-saved {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-align: center;
+    padding: var(--space-md);
+}
+
+.pg-saved-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    position: relative;
+}
+
+.pg-saved-item:hover {
+    border-color: var(--accent-blue);
+    background: var(--bg-hover);
+}
+
+.pg-saved-name {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pg-saved-meta {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+}
+
+.pg-saved-delete {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all var(--transition-fast);
+}
+
+.pg-saved-delete:hover {
+    color: var(--accent-red);
+    border-color: var(--accent-red);
+    background: rgba(248, 81, 73, 0.1);
+}
+
+/* Editor panel */
+.playground-editor-panel {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border-default);
+    overflow: hidden;
+}
+
+/* Output panel */
+.playground-output-panel {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.pg-output-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.pg-clear-output-btn {
+    font-size: 0.7rem !important;
+    padding: 3px 8px !important;
+}
+
+.pg-output-split {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.pg-output-split .output-content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* HTML preview iframe */
+.pg-html-preview {
+    flex: 1;
+    border: none;
+    background: #fff;
+    border-radius: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .playground-layout {
+        grid-template-columns: 220px 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .playground-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr 1fr;
+    }
+    .playground-sidebar {
+        display: none;
+    }
+}
