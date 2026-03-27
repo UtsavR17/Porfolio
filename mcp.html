@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Build and test MCP tools and resources for AI agent integration with Zoho.">
+  <title>Deluge Practice — MCP Playground</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar" id="main-nav">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">D</div>
+      <span>Deluge<span class="highlight">Practice</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html"><span class="nav-icon">📖</span> Tutorials</a></li>
+      <li><a href="flows.html"><span class="nav-icon">🔀</span> Flows</a></li>
+      <li><a href="creator.html"><span class="nav-icon">🏗️</span> Creator</a></li>
+      <li><a href="catalyst.html"><span class="nav-icon">⚗️</span> Catalyst</a></li>
+      <li><a href="mcp.html" class="active"><span class="nav-icon">🤖</span> MCP</a></li>
+      <li><a href="cheatsheet.html"><span class="nav-icon">📋</span> Cheat Sheet</a></li>
+      <li><a href="snippets.html"><span class="nav-icon">✂️</span> Snippets</a></li>
+      <li><a href="errors.html"><span class="nav-icon">🐛</span> Errors</a></li>
+    </ul>
+  </nav>
+  <main class="main-content">
+    <div class="mcp-layout">
+      <!-- Tool Builder Sidebar -->
+      <aside class="mcp-sidebar" id="mcp-sidebar">
+        <div class="palette-title">🤖 MCP Tool Builder</div>
+
+        <div class="mcp-form-group">
+          <label class="mcp-form-label">Tool Name</label>
+          <input class="mcp-form-input" type="text" id="mcp-tool-name" placeholder="e.g. get_crm_lead" value="get_crm_lead">
+        </div>
+        <div class="mcp-form-group">
+          <label class="mcp-form-label">Description</label>
+          <textarea class="mcp-form-input" id="mcp-tool-desc" placeholder="What does this tool do?">Fetch a lead record from Zoho CRM by ID</textarea>
+        </div>
+        <div class="mcp-form-group">
+          <label class="mcp-form-label">Input Parameters</label>
+          <div class="param-list" id="param-list">
+            <div class="param-item" data-idx="0">
+              <input type="text" placeholder="Param name" value="lead_id">
+              <select><option>string</option><option>number</option><option>boolean</option><option>object</option><option>array</option></select>
+              <button class="param-remove" onclick="removeParam(this)">✕</button>
+            </div>
+          </div>
+          <button class="add-param-btn" id="btn-add-param">+ Add Parameter</button>
+        </div>
+        <div class="mcp-form-group">
+          <label class="mcp-form-label">Required Params (comma separated)</label>
+          <input class="mcp-form-input" type="text" id="mcp-required" placeholder="e.g. lead_id, module" value="lead_id">
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="mcp-form-group">
+          <label class="mcp-form-label">Server Language</label>
+          <select class="mcp-form-input" id="mcp-language">
+            <option value="nodejs" selected>Node.js</option>
+            <option value="python">Python</option>
+          </select>
+        </div>
+
+        <!-- Example Gallery -->
+        <div class="mcp-examples">
+          <div class="palette-section-label">Load Example</div>
+          <button class="mcp-example-btn" data-example="crm_lookup">
+            <span class="mcp-example-icon">🔍</span> CRM Record Lookup
+          </button>
+          <button class="mcp-example-btn" data-example="create_lead">
+            <span class="mcp-example-icon">➕</span> Create Lead
+          </button>
+          <button class="mcp-example-btn" data-example="send_email">
+            <span class="mcp-example-icon">📧</span> Send Email
+          </button>
+          <button class="mcp-example-btn" data-example="fetch_report">
+            <span class="mcp-example-icon">📊</span> Fetch Report
+          </button>
+        </div>
+      </aside>
+
+      <!-- JSON Schema Preview -->
+      <div class="mcp-preview" id="schema-preview">
+        <div class="mcp-preview-header">
+          <span>📋 Tool Schema (JSON)</span>
+          <button class="btn" id="btn-copy-schema" style="padding:3px 10px;font-size:0.75rem;">Copy</button>
+        </div>
+        <div class="mcp-preview-content" id="schema-content"></div>
+      </div>
+
+      <!-- Handler Code Preview -->
+      <div class="mcp-preview" id="code-preview" style="border-left:1px solid var(--border-default);">
+        <div class="mcp-preview-header">
+          <span>⟨/⟩ Handler Code</span>
+          <button class="btn" id="btn-copy-code" style="padding:3px 10px;font-size:0.75rem;">Copy</button>
+        </div>
+        <div class="mcp-preview-content" id="code-content"></div>
+      </div>
+    </div>
+  </main>
+  <div class="toast-container" id="toast-container"></div>
+  <script src="js/mcp.js"></script>
+</body>
+</html>

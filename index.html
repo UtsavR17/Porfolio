@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Learn and practice Deluge scripting for Zoho with interactive tutorials, a code editor, and step-by-step lessons.">
+    <title>Deluge Practice — Learn Zoho Scripting</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- CodeMirror CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="main-nav">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">D</div>
+            <span>Deluge<span class="highlight">Practice</span></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active" id="nav-tutorials">
+                    <span class="nav-icon">📖</span> Tutorials
+                </a></li>
+            <li><a href="flows.html" id="nav-flows">
+                    <span class="nav-icon">🔀</span> Flows
+                </a></li>
+            <li><a href="creator.html" id="nav-creator">
+                    <span class="nav-icon">🏗️</span> Creator
+                </a></li>
+            <li><a href="catalyst.html" id="nav-catalyst">
+                    <span class="nav-icon">⚗️</span> Catalyst
+                </a></li>
+            <li><a href="mcp.html" id="nav-mcp">
+                    <span class="nav-icon">🤖</span> MCP
+                </a></li>
+            <li><a href="cheatsheet.html" id="nav-cheatsheet">
+                    <span class="nav-icon">📋</span> Cheat Sheet
+                </a></li>
+            <li><a href="snippets.html" id="nav-snippets">
+                    <span class="nav-icon">✂️</span> Snippets
+                </a></li>
+            <li><a href="errors.html" id="nav-errors">
+                    <span class="nav-icon">🐛</span> Errors
+                </a></li>
+        </ul>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="tutorial-sidebar">
+        <div class="sidebar-title">Tutorials</div>
+        <div id="sidebar-content">
+            <!-- Populated by JS -->
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-area">
+
+            <!-- Tutorial Instructions Panel -->
+            <div class="tutorial-panel" id="tutorial-panel">
+                <h2 id="lesson-title">
+                    <span class="lesson-badge" id="lesson-badge">Lesson 1</span>
+                    Welcome to Deluge
+                </h2>
+                <div class="description" id="lesson-description">
+                    Select a tutorial from the sidebar to get started with Deluge scripting for Zoho.
+                </div>
+                <div id="lesson-content">
+                    <!-- Dynamic lesson content -->
+                </div>
+            </div>
+
+            <!-- Code Editor -->
+            <div class="editor-area">
+                <div class="editor-header">
+                    <div class="file-tab">
+                        <span class="dot"></span>
+                        <span id="editor-filename">script.dg</span>
+                    </div>
+                    <div class="editor-actions">
+                        <button class="btn" id="btn-reset" title="Reset code">
+                            ↺ Reset
+                        </button>
+                        <button class="btn btn-primary" id="btn-run" title="Run code (Ctrl+Enter)">
+                            ▶ Run
+                        </button>
+                        <button class="btn btn-success" id="btn-check" title="Check solution">
+                            ✓ Check
+                        </button>
+                    </div>
+                </div>
+                <div class="editor-wrapper">
+                    <textarea id="code-editor"></textarea>
+                </div>
+            </div>
+
+            <!-- Output Panel -->
+            <div class="output-area">
+                <div class="output-header">
+                    <div class="output-title">
+                        ⬥ Output
+                    </div>
+                    <span class="output-status" id="output-status"></span>
+                </div>
+                <div class="output-content" id="output-content">
+                    <div class="output-line info">Ready to run your Deluge code...</div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- CodeMirror JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
+
+    <!-- App JS -->
+    <script src="js/tutorials.js"></script>
+</body>
+
+</html>

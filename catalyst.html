@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Practice Zoho Catalyst ZCQL queries, Data Store operations, and serverless functions.">
+  <title>Deluge Practice — Catalyst Lab</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
+</head>
+<body>
+  <nav class="navbar" id="main-nav">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">D</div>
+      <span>Deluge<span class="highlight">Practice</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html"><span class="nav-icon">📖</span> Tutorials</a></li>
+      <li><a href="flows.html"><span class="nav-icon">🔀</span> Flows</a></li>
+      <li><a href="creator.html"><span class="nav-icon">🏗️</span> Creator</a></li>
+      <li><a href="catalyst.html" class="active"><span class="nav-icon">⚗️</span> Catalyst</a></li>
+      <li><a href="mcp.html"><span class="nav-icon">🤖</span> MCP</a></li>
+      <li><a href="cheatsheet.html"><span class="nav-icon">📋</span> Cheat Sheet</a></li>
+      <li><a href="snippets.html"><span class="nav-icon">✂️</span> Snippets</a></li>
+      <li><a href="errors.html"><span class="nav-icon">🐛</span> Errors</a></li>
+    </ul>
+  </nav>
+  <main class="main-content">
+    <div class="catalyst-layout">
+      <div class="catalyst-tabs" id="catalyst-tabs">
+        <button class="catalyst-tab active" data-tab="zcql">🔍 ZCQL Query</button>
+        <button class="catalyst-tab" data-tab="datastore">🗄️ Data Store</button>
+        <button class="catalyst-tab" data-tab="functions">⚡ Functions</button>
+      </div>
+      <div class="catalyst-editor">
+        <div class="editor-header">
+          <div class="file-tab">
+            <span class="dot" style="background:var(--accent-teal);"></span>
+            <span id="catalyst-filename">query.zcql</span>
+          </div>
+          <div class="editor-actions">
+            <button class="btn" id="btn-catalyst-clear">↺ Clear</button>
+            <button class="btn btn-primary" id="btn-catalyst-run">▶ Execute</button>
+          </div>
+        </div>
+        <div class="editor-wrapper">
+          <textarea id="catalyst-editor"></textarea>
+        </div>
+      </div>
+      <div class="catalyst-results">
+        <div class="results-header">
+          <span>📊 Results</span>
+          <span class="results-stats" id="results-stats"></span>
+        </div>
+        <div class="results-table-wrapper" id="results-container">
+          <div style="text-align:center;padding:48px;color:var(--text-muted);">
+            Write a ZCQL query and click Execute to see results.
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div class="toast-container" id="toast-container"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/sql/sql.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
+  <script src="js/catalyst.js"></script>
+</body>
+</html>

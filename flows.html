@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Visual flow builder for creating and practicing Zoho custom flows with drag-and-drop nodes.">
+    <title>Deluge Practice — Flow Builder</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="main-nav">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">D</div>
+            <span>Deluge<span class="highlight">Practice</span></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html" id="nav-tutorials">
+                    <span class="nav-icon">📖</span> Tutorials
+                </a></li>
+            <li><a href="flows.html" class="active" id="nav-flows">
+                    <span class="nav-icon">🔀</span> Flows
+                </a></li>
+            <li><a href="creator.html" id="nav-creator">
+                    <span class="nav-icon">🏗️</span> Creator
+                </a></li>
+            <li><a href="catalyst.html" id="nav-catalyst">
+                    <span class="nav-icon">⚗️</span> Catalyst
+                </a></li>
+            <li><a href="mcp.html" id="nav-mcp">
+                    <span class="nav-icon">🤖</span> MCP
+                </a></li>
+            <li><a href="cheatsheet.html" id="nav-cheatsheet">
+                    <span class="nav-icon">📋</span> Cheat Sheet
+                </a></li>
+            <li><a href="snippets.html" id="nav-snippets">
+                    <span class="nav-icon">✂️</span> Snippets
+                </a></li>
+            <li><a href="errors.html" id="nav-errors">
+                    <span class="nav-icon">🐛</span> Errors
+                </a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="flow-layout">
+
+            <!-- Node Palette -->
+            <aside class="node-palette" id="node-palette">
+                <div class="palette-title">Flow Nodes</div>
+
+                <div class="palette-section">
+                    <div class="palette-section-label">Triggers</div>
+                    <div class="palette-node node-type-trigger" draggable="true" data-type="trigger"
+                        data-label="On Record Create" data-desc="Fires when a CRM record is created">
+                        <div class="node-icon">⚡</div>
+                        <div>
+                            <div class="node-label">On Record Create</div>
+                            <div class="node-desc">CRM record created</div>
+                        </div>
+                    </div>
+                    <div class="palette-node node-type-trigger" draggable="true" data-type="trigger"
+                        data-label="On Record Update" data-desc="Fires when a CRM record is updated">
+                        <div class="node-icon">⚡</div>
+                        <div>
+                            <div class="node-label">On Record Update</div>
+                            <div class="node-desc">CRM record updated</div>
+                        </div>
+                    </div>
+                    <div class="palette-node node-type-trigger" draggable="true" data-type="trigger"
+                        data-label="Scheduled" data-desc="Runs on a time schedule">
+                        <div class="node-icon">⏰</div>
+                        <div>
+                            <div class="node-label">Scheduled</div>
+                            <div class="node-desc">Time-based trigger</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="palette-section">
+                    <div class="palette-section-label">Logic</div>
+                    <div class="palette-node node-type-condition" draggable="true" data-type="condition"
+                        data-label="Condition" data-desc="If/else branching">
+                        <div class="node-icon">◆</div>
+                        <div>
+                            <div class="node-label">Condition</div>
+                            <div class="node-desc">If/else branching</div>
+                        </div>
+                    </div>
+                    <div class="palette-node node-type-loop" draggable="true" data-type="loop" data-label="Loop"
+                        data-desc="Iterate over records">
+                        <div class="node-icon">🔄</div>
+                        <div>
+                            <div class="node-label">Loop</div>
+                            <div class="node-desc">Iterate over records</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="palette-section">
+                    <div class="palette-section-label">Actions</div>
+                    <div class="palette-node node-type-action" draggable="true" data-type="action"
+                        data-label="Update Record" data-desc="Update a CRM record">
+                        <div class="node-icon">✏️</div>
+                        <div>
+                            <div class="node-label">Update Record</div>
+                            <div class="node-desc">Update a CRM record</div>
+                        </div>
+                    </div>
+                    <div class="palette-node node-type-action" draggable="true" data-type="action"
+                        data-label="Create Record" data-desc="Create a new record">
+                        <div class="node-icon">➕</div>
+                        <div>
+                            <div class="node-label">Create Record</div>
+                            <div class="node-desc">Create a new record</div>
+                        </div>
+                    </div>
+                    <div class="palette-node node-type-email" draggable="true" data-type="email" data-label="Send Email"
+                        data-desc="Send notification email">
+                        <div class="node-icon">📧</div>
+                        <div>
+                            <div class="node-label">Send Email</div>
+                            <div class="node-desc">Send notification email</div>
+                        </div>
+                    </div>
+                    <div class="palette-node node-type-api" draggable="true" data-type="api" data-label="API Call"
+                        data-desc="Make an HTTP request">
+                        <div class="node-icon">🌐</div>
+                        <div>
+                            <div class="node-label">API Call</div>
+                            <div class="node-desc">Make an HTTP request</div>
+                        </div>
+                    </div>
+                    <div class="palette-node node-type-function" draggable="true" data-type="function"
+                        data-label="Custom Function" data-desc="Run custom Deluge code">
+                        <div class="node-icon">{ }</div>
+                        <div>
+                            <div class="node-label">Custom Function</div>
+                            <div class="node-desc">Run Deluge code</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flow Actions -->
+                <div class="palette-section"
+                    style="margin-top: auto; border-top: 1px solid var(--border-default); padding-top: var(--space-md);">
+                    <div class="palette-section-label">Flow Actions</div>
+                    <button class="btn" id="btn-save-flow" style="width: 100%; margin-bottom: var(--space-sm);">
+                        💾 Save Flow
+                    </button>
+                    <button class="btn" id="btn-load-flow" style="width: 100%; margin-bottom: var(--space-sm);">
+                        📂 Load Flow
+                    </button>
+                    <button class="btn" id="btn-export-flow" style="width: 100%; margin-bottom: var(--space-sm);">
+                        📋 Export JSON
+                    </button>
+                    <button class="btn" id="btn-clear-canvas" style="width: 100%; color: var(--accent-red);">
+                        🗑️ Clear Canvas
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Canvas -->
+            <div class="canvas-container" id="canvas-container">
+                <div class="canvas-grid"></div>
+                <svg class="canvas-svg" id="canvas-svg"></svg>
+
+                <!-- Empty State -->
+                <div class="empty-state" id="empty-state">
+                    <div class="empty-icon">🔀</div>
+                    <h3>Drag nodes here to build your flow</h3>
+                    <p>Pick a node from the palette on the left and drop it on the canvas</p>
+                </div>
+
+                <!-- Canvas Toolbar -->
+                <div class="canvas-toolbar">
+                    <button class="tool-btn" id="btn-zoom-in" title="Zoom In">🔍+</button>
+                    <button class="tool-btn" id="btn-zoom-out" title="Zoom Out">🔍−</button>
+                    <div class="divider"></div>
+                    <button class="tool-btn" id="btn-fit" title="Fit to View">⊞</button>
+                    <div class="divider"></div>
+                    <button class="tool-btn" id="btn-generate-code" title="Generate Deluge Code">⟨/⟩</button>
+                </div>
+            </div>
+
+            <!-- Properties Panel -->
+            <div class="properties-panel hidden" id="properties-panel">
+                <div class="properties-title" id="properties-title">Node Properties</div>
+                <div id="properties-content">
+                    <!-- Dynamic content -->
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- App JS -->
+    <script src="js/flows.js"></script>
+</body>
+
+</html>

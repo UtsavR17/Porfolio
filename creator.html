@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Practice Zoho Creator form scripting with a visual form builder and Deluge event scripting.">
+  <title>Deluge Practice — Creator Studio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
+</head>
+<body>
+  <nav class="navbar" id="main-nav">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">D</div>
+      <span>Deluge<span class="highlight">Practice</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html"><span class="nav-icon">📖</span> Tutorials</a></li>
+      <li><a href="flows.html"><span class="nav-icon">🔀</span> Flows</a></li>
+      <li><a href="creator.html" class="active"><span class="nav-icon">🏗️</span> Creator</a></li>
+      <li><a href="catalyst.html"><span class="nav-icon">⚗️</span> Catalyst</a></li>
+      <li><a href="mcp.html"><span class="nav-icon">🤖</span> MCP</a></li>
+      <li><a href="cheatsheet.html"><span class="nav-icon">📋</span> Cheat Sheet</a></li>
+      <li><a href="snippets.html"><span class="nav-icon">✂️</span> Snippets</a></li>
+      <li><a href="errors.html"><span class="nav-icon">🐛</span> Errors</a></li>
+    </ul>
+  </nav>
+  <main class="main-content">
+    <div class="creator-layout">
+      <!-- Field Palette -->
+      <aside class="form-palette" id="field-palette">
+        <div class="palette-title">Form Fields</div>
+        <div class="template-selector" id="template-selector">
+          <button class="template-btn" data-tpl="contact">📇 Contact Form</button>
+          <button class="template-btn" data-tpl="task">✅ Task Tracker</button>
+          <button class="template-btn" data-tpl="inventory">📦 Inventory</button>
+        </div>
+        <div class="section-divider"></div>
+        <div class="palette-section-label">Drag to add</div>
+        <div class="palette-field" draggable="true" data-type="text"><div class="field-icon">Aa</div> Single Line</div>
+        <div class="palette-field" draggable="true" data-type="textarea"><div class="field-icon">¶</div> Multi Line</div>
+        <div class="palette-field" draggable="true" data-type="email"><div class="field-icon">@</div> Email</div>
+        <div class="palette-field" draggable="true" data-type="number"><div class="field-icon">#</div> Number</div>
+        <div class="palette-field" draggable="true" data-type="phone"><div class="field-icon">📞</div> Phone</div>
+        <div class="palette-field" draggable="true" data-type="date"><div class="field-icon">📅</div> Date</div>
+        <div class="palette-field" draggable="true" data-type="dropdown"><div class="field-icon">▼</div> Dropdown</div>
+        <div class="palette-field" draggable="true" data-type="checkbox"><div class="field-icon">☑</div> Checkbox</div>
+        <div class="palette-field" draggable="true" data-type="url"><div class="field-icon">🔗</div> URL</div>
+      </aside>
+
+      <!-- Form Preview -->
+      <div class="form-preview" id="form-preview">
+        <div class="form-preview-card">
+          <div class="form-title">
+            <span id="form-name">My Form</span>
+            <button class="btn" id="btn-submit-form">▶ Simulate Submit</button>
+          </div>
+          <div id="form-fields">
+            <div style="text-align:center;padding:40px;color:var(--text-muted);">
+              Drag fields from the left or select a template to get started.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Script Panel -->
+      <div class="creator-script-panel">
+        <div class="event-tabs" id="event-tabs">
+          <button class="event-tab active" data-event="on_add">on add</button>
+          <button class="event-tab" data-event="on_edit">on edit</button>
+          <button class="event-tab" data-event="on_validate">on validate</button>
+          <button class="event-tab" data-event="on_load">on load</button>
+          <button class="event-tab" data-event="on_submit">on submit</button>
+        </div>
+        <div class="editor-header">
+          <div class="file-tab">
+            <span class="dot" style="background:var(--accent-purple);"></span>
+            <span id="script-filename">on_add.dg</span>
+          </div>
+          <div class="editor-actions">
+            <button class="btn btn-primary" id="btn-run-script">▶ Run</button>
+          </div>
+        </div>
+        <div class="editor-wrapper">
+          <textarea id="creator-editor"></textarea>
+        </div>
+        <div class="output-area" style="max-height:180px;">
+          <div class="output-header">
+            <div class="output-title">⬥ Output</div>
+            <span class="output-status" id="creator-output-status"></span>
+          </div>
+          <div class="output-content" id="creator-output" style="min-height:80px;">
+            <div class="output-line info">Ready...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div class="toast-container" id="toast-container"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
+  <script src="js/creator.js"></script>
+</body>
+</html>
