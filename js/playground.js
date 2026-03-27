@@ -187,7 +187,7 @@
             warn: (...args) => logs.push({ type: 'warn', msg: args.map(formatVal).join(' ') }),
             info: (...args) => logs.push({ type: 'info', msg: args.map(formatVal).join(' ') }),
             table: (data) => logs.push({ type: 'info', msg: JSON.stringify(data, null, 2) }),
-            clear: () => {},
+            clear: () => { },
         };
 
         try {
@@ -460,10 +460,10 @@
 
             // Replace Deluge builtins
             jsExpr = jsExpr
-                .replace(/\.toUpperCase\(\)/g, '.toUpperCase()')
-                .replace(/\.toLowerCase\(\)/g, '.toLowerCase()')
-                .replace(/\.length\(\)/g, '.length')
-                .replace(/\.size\(\)/g, '.length')
+                .replace(/\.toUpperCase(?:\(\))?/g, '.toUpperCase()')
+                .replace(/\.toLowerCase(?:\(\))?/g, '.toLowerCase()')
+                .replace(/\.length(?:\(\))?/g, '.length')
+                .replace(/\.size(?:\(\))?/g, '.length')
                 .replace(/\.contains\("([^"]+)"\)/g, '.includes("$1")')
                 .replace(/\.contains\('([^']+)'\)/g, ".includes('$1')")
                 .replace(/\.replaceAll\(/g, '.replaceAll(')

@@ -582,14 +582,10 @@ function evaluateExpression(expr, vars) {
   if (expr.includes('+')) {
     const parts = expr.split('+').map(p => p.trim());
     return parts.map(p => {
-      if (p.startsWith('"') && p.endsWith('"')) return p.slice(1, -1);
-      if (vars[p] !== undefined) {
-        if (Array.isArray(vars[p])) return JSON.stringify(vars[p]);
-        if (typeof vars[p] === 'object') return JSON.stringify(vars[p]);
-        return String(vars[p]);
-      }
-      if (!isNaN(p)) return p;
-      return p;
+      let evaluated = evaluateExpression(p, vars);
+      if (Array.isArray(evaluated)) return JSON.stringify(evaluated);
+      if (typeof evaluated === 'object') return JSON.stringify(evaluated);
+      return String(evaluated);
     }).join('');
   }
 
@@ -597,7 +593,7 @@ function evaluateExpression(expr, vars) {
   if (expr.startsWith('"') && expr.endsWith('"')) return expr.slice(1, -1);
 
   // Method calls on variables
-  const methodCall = expr.match(/^(\w+)\.(toUpperCase|toLowerCase|length|size|get|toString)\(([^)]*)\)$/);
+  const methodCall = expr.match(/^(\w+)\.(toUpperCase|toLowerCase|length|size|get|toString)(?:\(([^)]*)\))?$/);
   if (methodCall) {
     const varName = methodCall[1];
     const method = methodCall[2];
@@ -705,7 +701,7 @@ function addOutputLine(type, text) {
   const line = document.createElement('div');
   line.className = `output-line ${type}`;
   const now = new Date();
-  const ts = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
+  const ts = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
   line.innerHTML = `<span class="timestamp">[${ts}]</span>${text}`;
   outputEl.appendChild(line);
   outputEl.scrollTop = outputEl.scrollHeight;
